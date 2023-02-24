@@ -1,4 +1,4 @@
-package lxq.dockerboot.pojo;
+package lxq.dockerboot.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

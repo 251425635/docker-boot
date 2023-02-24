@@ -1,5 +1,6 @@
 spring:
+  # mysql?????
   datasource:
-    url: jdbc:mysql://120.78.182.171:3307/lxqdb
+    url: jdbc:mysql://120.78.182.171:3307/lxqdb #???????
     username: root
     password: 12345

@@ -1,6 +1,6 @@
-package lxq.dockerboot.dao;
+package lxq.dockerboot.mapper;
 
-import lxq.dockerboot.pojo.User;
+import lxq.dockerboot.entities.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;

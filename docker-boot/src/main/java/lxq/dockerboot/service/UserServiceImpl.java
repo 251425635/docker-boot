@@ -1,7 +1,7 @@
 package lxq.dockerboot.service;
 
-import lxq.dockerboot.dao.UserMapper;
-import lxq.dockerboot.pojo.User;
+import lxq.dockerboot.mapper.UserMapper;
+import lxq.dockerboot.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

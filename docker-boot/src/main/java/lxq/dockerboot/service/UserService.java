@@ -1,6 +1,6 @@
 package lxq.dockerboot.service;
 
-import lxq.dockerboot.pojo.User;
+import lxq.dockerboot.entities.User;
 
 /**
  * @Author Yikair

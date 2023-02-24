@@ -1,8 +1,7 @@
 package lxq.dockerboot.controller;
 
-import lxq.dockerboot.pojo.User;
+import lxq.dockerboot.entities.User;
 import lxq.dockerboot.service.UserService;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,6 @@ import java.util.Date;
  * @Create 2023/2/24 21:59
  * @Description
  */
-@MapperScan("lxq/dockerboot/dao")
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
