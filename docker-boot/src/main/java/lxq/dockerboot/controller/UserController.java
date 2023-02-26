@@ -1,6 +1,7 @@
 package lxq.dockerboot.controller;
 
 import lxq.dockerboot.entities.User;
+import lxq.dockerboot.service.RedisService;
 import lxq.dockerboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    RedisService redisService;
+
     @GetMapping(value = "/insertUser")
     public void insert() {
         Date date = new Date();
@@ -34,8 +38,11 @@ public class UserController {
         user.setDeleted(0);
         user.setCreate_time(timeStamep);
         user.setUpdate_time(timeStamep);
-
         userService.insertUser(user);
+
+        redisService.set("test", "lxq", 600);
+        System.out.println(redisService.get("test"));
+
     }
     @GetMapping(value = "/selectUser")
     public void getUser()
