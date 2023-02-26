@@ -40,8 +40,10 @@ public class UserController {
         user.setUpdate_time(timeStamep);
         userService.insertUser(user);
 
+        redisService.get("k1");
         redisService.set("test", "lxq", 600);
-        System.out.println(redisService.get("test"));
+        System.out.println("redis：" + redisService.get("test"));
+
 
     }
     @GetMapping(value = "/selectUser")

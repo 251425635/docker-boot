@@ -1,5 +1,5 @@
 spring:
-  # mysql????????
+  # mysql 配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://120.78.182.171:3307/lxqdb?useUnicode=true&characterEncoding=utf-8&useSSL=false
@@ -7,25 +7,25 @@ spring:
     password: 12345
     druid:
       test-while-idle: false
-  # redis ??
+  # redis 配置
   redis:
-    timeout: 6000 # ???????ms?
+    host: 120.78.182.171
+    port: 6379
+    timeout: 6000 # ms
     # password: 123456
-    database: 0 #????0????
+    database: 0
     jedis:
-      #Redis?????
       pool:
-        max-active: 8 #?????
-        max-wait: 10000 #???????????
-        max-idle: 10 #???????????
-        min-idle: 5 #???????????
-    cluster:
+        max-active: 8
+        max-wait: 10000
+        max-idle: 10
+        min-idle: 5
       max-redirects: 3
-      nodes:
-        -  120.78.182.171:6381
-        -  120.78.182.171:6382
-        -  120.78.182.171:6383
-        -  120.78.182.171:6384
-        -  120.78.182.171:6385
-        -  120.78.182.171:6386
+#      nodes:
+#        -  120.78.182.171:6381
+#        -  120.78.182.171:6382
+#        -  120.78.182.171:6383
+#        -  120.78.182.171:6384
+#        -  120.78.182.171:6385
+#        -  120.78.182.171:6386
 
