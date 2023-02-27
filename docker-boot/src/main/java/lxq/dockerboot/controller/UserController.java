@@ -1,56 +1,58 @@
 package lxq.dockerboot.controller;
 
+import cn.hutool.core.util.IdUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import lxq.dockerboot.entities.User;
 import lxq.dockerboot.service.RedisService;
 import lxq.dockerboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Random;
 
 /**
  * @Author Yikair
  * @Create 2023/2/24 21:59
  * @Description
  */
-@Controller
+@RestController
 @RequestMapping(value = "/user")
+@Api(tags = "用户管理", description = "用户user接口")
+@Slf4j
 public class UserController {
 
     @Autowired
     UserService userService;
-
     @Autowired
     RedisService redisService;
 
-    @GetMapping(value = "/insertUser")
-    public void insert() {
+    @ApiOperation("数据库新增用户数据")
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public void addUser() {
         Date date = new Date();
         Timestamp timeStamep = new Timestamp(date.getTime());
 
-        User user = new User();
-        user.setUsername("lxq2");
-        user.setPassword("12345");
-        user.setSex(0);
-        user.setDeleted(0);
-        user.setCreate_time(timeStamep);
-        user.setUpdate_time(timeStamep);
-        userService.insertUser(user);
-
-        redisService.get("k1");
-        redisService.set("test", "lxq", 600);
-        System.out.println("redis：" + redisService.get("test"));
-
+        for (int i = 0; i < 3; i++) {
+            User user = new User();
+            user.setUsername("lxq" + i);
+            user.setPassword(IdUtil.simpleUUID().substring(0, 6));
+            user.setSex((byte) new Random().nextInt(2));
+            userService.addUser(user);
+        }
 
     }
-    @GetMapping(value = "/selectUser")
-    public void getUser()
-    {
 
-        User user= userService.getUser("1");
-        System.out.println(user);
+    @ApiOperation("数据库查询用户数据")
+    @RequestMapping(value = "/select/{id}", method = RequestMethod.GET)
+    public User findUserById(@PathVariable Integer id) {
+        User user = userService.findUserById(id);
+        return user;
     }
 }

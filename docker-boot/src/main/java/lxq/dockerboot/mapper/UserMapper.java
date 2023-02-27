@@ -17,12 +17,12 @@ import org.springframework.stereotype.Repository;
 public interface UserMapper {
 
     @Select("select * from user where id = #{id}")
-    User getUserById(String id);
+    User getUserById(Integer id);
 
     @Insert("insert into user(`username`, `password`, `sex`, `deleted`, `create_time`, `update_time`) " +
             "values ( #{username}, #{password}, #{sex}, #{deleted}, #{create_time}, #{update_time} ) "
     )
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
-    int Insert(User user);
+    int addUser(User user);
 
 }

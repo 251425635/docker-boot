@@ -8,6 +8,6 @@ import lxq.dockerboot.entities.User;
  * @Description
  */
 public interface UserService {
-    User getUser(String id);
-    int insertUser(User user);
+    User findUserById(Integer id);
+    void addUser(User user);
 }
